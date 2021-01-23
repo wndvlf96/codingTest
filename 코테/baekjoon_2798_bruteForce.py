@@ -1,0 +1,17 @@
+# 블랙잭
+# 첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다.
+# 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다. 
+# 합이 M을 넘지 않는 카드 3장을 찾을 수 있는 경우만 입력으로 주어진다.
+# 첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력한다.
+
+in1, in2 = map(int, input().split())
+in3 = list(map(int, input().split()))
+# in3에서 3개 뽑아서 in2와 가장 가깝게(초과 되지 않으며) 만들기
+val = 0
+for i in range(in1 - 2):
+    for j in range(i+1, in1 - 1):
+        for k in range(j+1, in1):
+            temp = in3[i] + in3[j] + in3[k]
+            if in2 >= temp and temp > val:
+                val = temp
+print(val)
