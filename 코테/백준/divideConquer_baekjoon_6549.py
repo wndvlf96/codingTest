@@ -3,6 +3,7 @@
 
 from sys import stdin
 import sys
+import heapq
 
 sys.setrecursionlimit(1000000)
 
@@ -28,14 +29,17 @@ while True:
     if in1 == [0]:
         break
     in2 = in1[1:]
-    big = [in1[0]]
+    #big = [in1[0]]
+    bighq = []
+    heapq.heappush(bighq, (in1[0] * -1))
     temp = in2
     in3 = sorted(in2)
     for i in in3:
         tmp = temp.index(i)
-        big.append(calLeft(in2, tmp, i)+ calRight(in2, tmp,i) + i)
+        #big.append(calLeft(in2, tmp, i)+ calRight(in2, tmp,i) + i)
+        heapq.heappush(bighq, ((calLeft(in2, tmp, i)+ calRight(in2, tmp,i) + i)*-1))
         temp[tmp] = -1
-    ans.append(max(big))
+    ans.append(heapq.heappop(bighq) * -1)
 
 for i in ans:
     print(i)
