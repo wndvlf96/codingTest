@@ -9,7 +9,8 @@ for i in range(in1):
     if in2[0] == 'add':
         set1.add(int(in2[1]))
     elif in2[0] == 'remove':
-        set1.remove(int(in2[1]))
+        if int(in2[1]) in set1:
+            set1.remove(int(in2[1]))
     elif in2[0] == 'check':
         if int(in2[1]) in set1:
             ans.append(1)
